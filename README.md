@@ -49,7 +49,7 @@ class StorageItem extends CollectionAbstract
      * @param $filename
      * @return \Mittax\MediaConverterBundle\Entity\Storage\StorageItem[]
      */
-    public function filter($filename)
+    public function filterByFilename( string $filename) : Array
     {
         return $this->filterByPropertyNameAndValue('filename', $filename);
     }
@@ -57,7 +57,7 @@ class StorageItem extends CollectionAbstract
     /**
      * @return \Mittax\MediaConverterBundle\Entity\Storage\StorageItem
      */
-    public function getFirstItem()
+    public function getFirstItem() : \Mittax\MediaConverterBundle\Entity\Storage\StorageItem
     {
         return parent::getFirstItem();
     }
@@ -65,7 +65,7 @@ class StorageItem extends CollectionAbstract
     /**
      * @return \Mittax\MediaConverterBundle\Entity\Storage\StorageItem[]
      */
-    public function getAllItems()
+    public function getAllItems() : Array
     {
         return parent::getAllItems();
     }
