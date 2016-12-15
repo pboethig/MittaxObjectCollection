@@ -9,35 +9,11 @@
 >
     <php>
         <ini name="error_reporting" value="-1" />
-        <server name="KERNEL_DIR" value="app/" />
     </php>
 
     <testsuites>
-        <testsuite name="Mittax/EmoticoBundleTest">
-            <directory>src/Mittax/EmoticoBundle/Tests</directory>
+        <testsuite name="tests">
+            <directory>Tests</directory>
         </testsuite>
     </testsuites>
-
-    <testsuites>
-        <testsuite name="Mittax/WsseTest">
-            <directory>src/Mittax/WsseBundle/Tests</directory>
-        </testsuite>
-    </testsuites>
-
-    <testsuites>
-        <testsuite name="Mittax/MessageBundleTest">
-            <directory>src/Mittax/MessageBundle/Tests</directory>
-        </testsuite>
-    </testsuites>
-
-    <filter>
-        <whitelist>
-            <directory>src</directory>
-            <exclude>
-                <directory>src/*Bundle/Resources</directory>
-                <directory>src/*/*Bundle/Resources</directory>
-                <directory>src/*/Bundle/*Bundle/Resources</directory>
-            </exclude>
-        </whitelist>
-    </filter>
 </phpunit>
