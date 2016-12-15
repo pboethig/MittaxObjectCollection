@@ -90,5 +90,5 @@ The resulting collection is typed of your context
 The result is a typed list from type StorageItem
 
 ### Run tests
-```bash phpunit```
+```phpunit```
 
