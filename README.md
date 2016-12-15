@@ -10,7 +10,7 @@ composer require mittax/objectcollection
 
 Create a subclass of objectCollectionAbstract which adds a list of objects to the collection by the constructor
 
-Here is a sample abstraction
+Here is a sample abstraction. Further have a look in Tests. There are some basic usages documented
 
 ```php
 <?php
@@ -88,3 +88,7 @@ The resulting collection is typed of your context
 ```
 
 The result is a typed list from type StorageItem
+
+### Run tests
+```sh phpunit```
+
