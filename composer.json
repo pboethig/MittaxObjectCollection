@@ -1,0 +1,28 @@
+{
+    "name": "mittax/objectcollection",
+    "license": "MIT",
+    "type": "library",
+    "description":"A very simple library to handle object lists on php",
+    "authors": [
+        {
+            "name": "Peter Böthig",
+            "email": "pboethig@gmail.com",
+            "homepage": "https://github.com/pboethig/MittaxObjectCollection"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Mittax\\ObjectCollection\\": "src/"
+        }
+    },"autoload-dev": {
+        "psr-4": {
+            "Mittax\\ObjectCollection\\Tests\\": "Mittax/ObjectCollection/Tests/"
+        }
+    },
+    "require": {
+        "php": ">=7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*"
+    }
+}
