@@ -17,26 +17,21 @@ class TestCollection extends CollectionAbstract
      */
     public function __construct(Array $items)
     {
-        parent::__construct();
-
-        foreach ($items as $item)
-        {
-            $this->add($item);
-        }
+        parent::__construct($items);
     }
 
     /**
-     * @return TestCollectionItem
+     * @return ICollectionItem
      */
-    public function getFirstItem()
+    public function getFirstItem() : ICollectionItem
     {
         return parent::getFirstItem();
     }
 
     /**
-     * @return TestCollectionItem[]
+     * @return ICollection
      */
-    public function getAllItems()
+    public function getAllItems() : Array
     {
         return parent::getAllItems();
     }

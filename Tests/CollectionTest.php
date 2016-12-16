@@ -8,6 +8,8 @@
 
 namespace Mittax\ObjectCollection\Tests;
 
+require_once __DIR__ . '/../src/ICollection.php';
+require_once __DIR__ . '/../src/ICollectionItem.php';
 require_once __DIR__ . '/../src/CollectionAbstract.php';
 require_once __DIR__ . '/../src/TestCollectionItem.php';
 require_once __DIR__ . '/../src/TestCollection.php';

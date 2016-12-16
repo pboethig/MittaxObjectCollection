@@ -10,12 +10,13 @@ namespace Mittax\ObjectCollection;
 
 
 use \InvalidArgumentException;
+use Mittax\MediaConverterBundle\Collection\ICollection;
 
 /**
  * Class CollectionAbstract
  * @package Mittax\MediaConverterBundle\Collection
  */
-class CollectionAbstract
+class CollectionAbstract implements ICollection
 {
     /**
      * @var array
@@ -30,27 +31,34 @@ class CollectionAbstract
     /**
      * @var int
      */
-    private $countObjects;
+    private $countObjects = 0;
 
     /**
      * @var int
      */
-    private $iterations =0;
+    private $iterations = 0;
 
-
-    public function __construct()
+    /**
+     * CollectionAbstract constructor.
+     * @param array $items
+     */
+    public function __construct(Array $items = null)
     {
         $this->resetIterator();
 
-        $this->countObjects = 0;
-
-        $this->objects = [];
+        if ($items)
+        {
+            foreach ($items as $item)
+            {
+                $this->add($item);
+            }
+        }
     }
 
     /**
-     * @return array
+     * @return ICollection
      */
-    public function getAllItems()
+    public function getAllItems() : ICollection
     {
         return $this->objects;
     }
@@ -74,7 +82,7 @@ class CollectionAbstract
     }
 
 
-    public function isOdd()
+    public function isOdd() : bool
     {
         return $this->iterations%2==1;
     }
@@ -82,7 +90,7 @@ class CollectionAbstract
     /**
      * @return bool
      */
-    public function isEven()
+    public function isEven() : bool
     {
         return $this->iterations%2==0;
     }
@@ -90,9 +98,9 @@ class CollectionAbstract
     /**
      * @param $propertyName
      * @param $value
-     * @return array
+     * @return ICollectionItem[]
      */
-    public function getByPropertyNameAndValue($propertyName, $value)
+    public function getByPropertyNameAndValue($propertyName, $value) : Array
     {
         $list = [];
 
@@ -130,11 +138,19 @@ class CollectionAbstract
     }
 
     /**
-     * @return mixed
+     * @return ICollectionItem
      */
     public function getFirstItem()
     {
         return reset($this->objects);
+    }
+
+    /**
+     * @return ICollectionItem
+     */
+    public function getLastItem()
+    {
+        return end($this->objects);
     }
 
     /**
@@ -180,14 +196,6 @@ class CollectionAbstract
     public function getByKey($num)
     {
         return (isset($this->objects[$num])) ? $this->objects[$num] : false;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getLast()
-    {
-        return $this->objects[$this->countObjects-1];
     }
 
 
@@ -352,7 +360,7 @@ class CollectionAbstract
     /**
      * @return mixed
      */
-    public function getIterateNum()
+    public function getIterateNum() : int
     {
         return $this->iterations;
     }
@@ -360,8 +368,16 @@ class CollectionAbstract
     /**
      * @return int
      */
-    public function count()
+    public function count() : int
     {
         return $this->countObjects;
+    }
+
+    /**
+     * @return ICollection
+     */
+    public function getCollection() : ICollection
+    {
+        return $this;
     }
 }

@@ -9,7 +9,7 @@
 namespace Mittax\ObjectCollection;
 
 
-class TestCollectionItem
+class TestCollectionItem implements ICollectionItem
 {
     /**
      * @var string
