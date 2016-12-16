@@ -11,5 +11,8 @@ namespace Mittax\ObjectCollection;
 
 interface ICollectionItem
 {
-
+    /**
+     * @return string
+     */
+    public function getUuid() : string ;
 }

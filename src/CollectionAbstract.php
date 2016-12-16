@@ -10,7 +10,6 @@ namespace Mittax\ObjectCollection;
 
 
 use \InvalidArgumentException;
-use Mittax\MediaConverterBundle\Collection\ICollection;
 
 /**
  * Class CollectionAbstract

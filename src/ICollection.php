@@ -14,20 +14,20 @@ interface ICollection
     /**
      * @return ICollectionItem
      */
-    public function getFirstItem() : ICollectionItem;
+    public function getFirstItem();
+
+    /**
+     * @return ICollectionItem[]
+     */
+    public function getAllItems();
 
     /**
      * @return ICollection
      */
-    public function getAllItems() : Array;
-
-    /**
-     * @return ICollection
-     */
-    public function getCollection() : ICollection;
+    public function getCollection();
 
     /**
      * @return int
      */
-    public function count() : int;
+    public function count();
 }
