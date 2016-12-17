@@ -30,4 +30,9 @@ interface ICollection
      * @return int
      */
     public function count();
+
+    /**
+     * @return integer
+     */
+    public function getUuid();
 }

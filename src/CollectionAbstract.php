@@ -38,11 +38,18 @@ class CollectionAbstract implements ICollection
     private $iterations = 0;
 
     /**
+     * @var string
+     */
+    private $_uuid;
+
+    /**
      * CollectionAbstract constructor.
      * @param array $items
      */
     public function __construct(Array $items = null)
     {
+        $this->_uuid = microtime();
+
         $this->resetIterator();
 
         if ($items)
@@ -378,5 +385,13 @@ class CollectionAbstract implements ICollection
     public function getCollection()
     {
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUuid()
+    {
+        return $this->_uuid;
     }
 }
