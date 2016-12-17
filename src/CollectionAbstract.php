@@ -57,7 +57,7 @@ class CollectionAbstract implements ICollection
     /**
      * @return ICollection
      */
-    public function getAllItems() : ICollection
+    public function getAllItems()
     {
         return $this->objects;
     }
@@ -375,7 +375,7 @@ class CollectionAbstract implements ICollection
     /**
      * @return ICollection
      */
-    public function getCollection() : ICollection
+    public function getCollection()
     {
         return $this;
     }
