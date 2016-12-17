@@ -45,4 +45,12 @@ class TestCollection extends CollectionAbstract
     {
         return parent::filterByPropertyNameAndValue($propertyName, $value);
     }
+
+    /**
+     * @return string
+     */
+    public function getUuid() : string
+    {
+        return parent::getUuid();
+    }
 }

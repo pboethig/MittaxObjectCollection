@@ -22,6 +22,11 @@ class TestCollectionItem implements ICollectionItem
     private $_property2;
 
     /**
+     * @var
+     */
+    private $_uuid;
+
+    /**
      * @return string
      */
     public function getProperty()
@@ -51,5 +56,10 @@ class TestCollectionItem implements ICollectionItem
     public function setProperty2($property2)
     {
         $this->_property2 = $property2;
+    }
+
+    public function getUuid() : string
+    {
+        return $this->_uuid;
     }
 }
