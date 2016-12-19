@@ -8,8 +8,8 @@
 
 namespace Mittax\ObjectCollection;
 
-
 use \InvalidArgumentException;
+use Mittax\MediaConverterBundle\Exception\CollectionEmptyException;
 
 /**
  * Class CollectionAbstract
@@ -44,10 +44,11 @@ class CollectionAbstract implements ICollection
 
     /**
      * CollectionAbstract constructor.
-     * @param array $items
+     * @param ICollectionItem[] $items
      */
     public function __construct(Array $items = null)
     {
+
         $this->_uuid = microtime();
 
         $this->resetIterator();
@@ -66,19 +67,26 @@ class CollectionAbstract implements ICollection
      */
     public function getAllItems()
     {
+        if (empty($this->objects)) {
+
+            throw new InvalidArgumentException('Collection is empty');
+        }
+
         return $this->objects;
     }
 
     /**
      * @param $obj
      */
-    public function add($obj)
+    public function add(ICollectionItem $obj)
     {
-        $this->objects[] = $obj;
+        if (!isset($this->objects[$obj->getUuid()]))
+        {
+            $this->objects[$obj->getUuid()] = $obj;
 
-        $this->countObjects++;
+            $this->countObjects++;
+        }
     }
-
 
     public function next()
     {
@@ -132,22 +140,30 @@ class CollectionAbstract implements ICollection
     {
         $methodName = "get" . ucwords($propertyName);
 
+        $collection = new self;
+
         foreach ($this->objects as $key => $obj)
         {
-            if ($obj->{$methodName}() != $value)
+            if ($obj->{$methodName}() == $value)
             {
-                $this->removeByPropertyNameAndValue($propertyName, $obj->{$methodName}());
+                $collection->add($obj);
             }
         }
 
-        return $this;
+        return $collection;
     }
 
     /**
-     * @return ICollectionItem
+     * @return mixed
+     * @throws CollectionEmptyException
      */
     public function getFirstItem()
     {
+        if (empty($this->objects))
+        {
+            throw new CollectionEmptyException('No items in collection');
+        }
+
         return reset($this->objects);
     }
 
@@ -156,6 +172,11 @@ class CollectionAbstract implements ICollection
      */
     public function getLastItem()
     {
+        if (empty($this->objects))
+        {
+            throw new CollectionEmptyException('No items in collection');
+        }
+
         return end($this->objects);
     }
 
