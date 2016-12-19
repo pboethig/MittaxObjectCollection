@@ -66,8 +66,8 @@ class CollectionAbstract implements ICollection
      */
     public function getAllItems()
     {
-        if (empty($this->objects)) {
-
+        if (empty($this->objects))
+        {
             throw new InvalidArgumentException('Collection is empty');
         }
 
@@ -154,13 +154,13 @@ class CollectionAbstract implements ICollection
 
     /**
      * @return mixed
-     * @throws CollectionEmptyException
+     * @throws \InvalidArgumentException
      */
     public function getFirstItem()
     {
         if (empty($this->objects))
         {
-            throw new CollectionEmptyException('No items in collection');
+            throw new InvalidArgumentException('No items in collection');
         }
 
         return reset($this->objects);
@@ -173,7 +173,7 @@ class CollectionAbstract implements ICollection
     {
         if (empty($this->objects))
         {
-            throw new CollectionEmptyException('No items in collection');
+            throw new InvalidArgumentException('No items in collection');
         }
 
         return end($this->objects);
