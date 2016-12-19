@@ -9,7 +9,6 @@
 namespace Mittax\ObjectCollection;
 
 use \InvalidArgumentException;
-use Mittax\MediaConverterBundle\Exception\CollectionEmptyException;
 
 /**
  * Class CollectionAbstract
