@@ -45,7 +45,7 @@ class CollectionAbstract implements ICollection
      * CollectionAbstract constructor.
      * @param ICollectionItem[] $items
      */
-    public function __construct(Array $items = null)
+    public function __construct(Array $items)
     {
 
         $this->_uuid = microtime();
@@ -54,10 +54,9 @@ class CollectionAbstract implements ICollection
 
         if ($items)
         {
-            foreach ($items as $item)
-            {
-                $this->add($item);
-            }
+            $this->objects = $items;
+
+            $this->countObjects = count($items);
         }
     }
 
@@ -66,11 +65,6 @@ class CollectionAbstract implements ICollection
      */
     public function getAllItems()
     {
-        if (empty($this->objects))
-        {
-            throw new InvalidArgumentException('Collection is empty');
-        }
-
         return $this->objects;
     }
 
@@ -139,7 +133,7 @@ class CollectionAbstract implements ICollection
     {
         $methodName = "get" . ucwords($propertyName);
 
-        $collection = new self;
+        $collection = new self([]);
 
         foreach ($this->objects as $key => $obj)
         {
@@ -158,11 +152,6 @@ class CollectionAbstract implements ICollection
      */
     public function getFirstItem()
     {
-        if (empty($this->objects))
-        {
-            throw new InvalidArgumentException('No items in collection');
-        }
-
         return reset($this->objects);
     }
 
@@ -171,11 +160,6 @@ class CollectionAbstract implements ICollection
      */
     public function getLastItem()
     {
-        if (empty($this->objects))
-        {
-            throw new InvalidArgumentException('No items in collection');
-        }
-
         return end($this->objects);
     }
 
