@@ -26,6 +26,12 @@ class TestCollectionItem implements ICollectionItem
      */
     private $_uuid;
 
+
+    public function __construct()
+    {
+        $this->_uuid = crc32(uniqid());
+    }
+
     /**
      * @return string
      */

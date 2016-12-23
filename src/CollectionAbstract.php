@@ -47,7 +47,6 @@ class CollectionAbstract implements ICollection
      */
     public function __construct(Array $items)
     {
-
         $this->_uuid = microtime();
 
         $this->resetIterator();
@@ -138,6 +137,28 @@ class CollectionAbstract implements ICollection
         foreach ($this->objects as $key => $obj)
         {
             if ($obj->{$methodName}() == $value)
+            {
+                $collection->add($obj);
+            }
+        }
+
+        return $collection;
+    }
+
+    /**
+     * @param $propertyName
+     * @param $value
+     * @return $this
+     */
+    public function filterValueLike(string $propertyName, string $value)
+    {
+        $methodName = "get" . ucwords($propertyName);
+
+        $collection = new self([]);
+
+        foreach ($this->objects as $key => $obj)
+        {
+            if (strstr($obj->{$methodName}(), $value))
             {
                 $collection->add($obj);
             }

@@ -53,4 +53,11 @@ class TestCollection extends CollectionAbstract
     {
         return parent::getUuid();
     }
+
+    public function filterValueLike(string $propertyName, string $value)
+    {
+        return parent::filterValueLike($propertyName, $value);
+    }
+
+
 }

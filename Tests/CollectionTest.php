@@ -74,14 +74,14 @@ class CollectionTest extends \PHPUnit\Framework\TestCase
 
         $this->_typedCollection->filter('property', 'test3');
 
-        $this->assertEquals('test3', $this->_typedCollection->getFirstItem()->getProperty());
+        $this->assertEquals('test3', $this->_typedCollection->getLastItem()->getProperty());
     }
 
     public function testFilter()
     {
         $this->_typedCollection->filter('property', 'test3');
 
-        $this->assertEquals('test3', $this->_typedCollection->getFirstItem()->getProperty());
+        $this->assertEquals('test3', $this->_typedCollection->getLastItem()->getProperty());
     }
 
 }

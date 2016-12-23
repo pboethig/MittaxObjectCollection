@@ -35,4 +35,11 @@ interface ICollection
      * @return integer
      */
     public function getUuid();
+
+    /**
+     * @param $propertyName
+     * @param $value
+     * @return ICollection[]
+     */
+    public function filterValueLike(string $propertyName, string $value);
 }
