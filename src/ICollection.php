@@ -9,7 +9,7 @@
 namespace Mittax\ObjectCollection;
 
 
-interface ICollection
+interface ICollection extends \Countable
 {
     /**
      * @return ICollectionItem
